@@ -1,392 +1,686 @@
-<html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<meta name="Generator" content="Microsoft Word 15 (filtered)">
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
-	{font-family:宋体;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:等线;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"等线 Light";
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:FangSong;
-	panose-1:2 1 6 9 6 1 1 1 1 1;}
-@font-face
-	{font-family:Cambria;
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:"\@等线 Light";}
-@font-face
-	{font-family:"\@等线";
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"\@FangSong";}
-@font-face
-	{font-family:"\@宋体";
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-block-start: 1em;
-    	margin-block-end: 1em;
-    	margin-inline-start: 0px;
-    	margin-inline-end: 0px;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	font-size:12.0pt;
-	font-family:"Times New Roman",serif;}
-p.MsoTitle, li.MsoTitle, div.MsoTitle
-	{mso-style-link:"标题 字符";
-	margin-top:12.0pt;
-	margin-right:0cm;
-	margin-bottom:3.0pt;
-	margin-left:0cm;
-	text-align:center;
-	font-size:16.0pt;
-	font-family:"等线 Light";
-	font-weight:bold;}
-p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
-	{mso-style-link:"副标题 字符";
-	margin-top:12.0pt;
-	margin-right:0cm;
-	margin-bottom:3.0pt;
-	margin-left:0cm;
-	text-align:center;
-	font-size:16.0pt;
-	font-family:"Times New Roman",serif;
-	font-weight:bold;}
-a:link, span.MsoHyperlink
-	{color:blue;
-	text-decoration:underline;}
-p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
-	{margin-block-start: 1em;
-    	margin-block-end: 1em;
-    	margin-inline-start: 0px;
-    	margin-inline-end: 0px;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	text-indent:21.0pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman",serif;}
-span.a
-	{mso-style-name:"标题 字符";
-	mso-style-link:标题;
-	font-family:"等线 Light";
-	font-weight:bold;}
-span.a0
-	{mso-style-name:"副标题 字符";
-	mso-style-link:副标题;
-	font-family:"Times New Roman",serif;
-	font-weight:bold;}
-.MsoChpDefault
-	{font-family:等线;}
- /* Page Definitions */
- @page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;
-	layout-grid:15.6pt;}
-div.WordSection1
-	{page:WordSection1;}
- /* List Definitions */
- ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
--->
-</style>
-
-</head>
-
-<body lang="ZH-CN" link="blue" vlink="#954F72" style="word-wrap:break-word;margin-left: 210px;margin-right: 280px;margin-top: 50px">
-
-<div class="WordSection1" style="layout-grid:15.6pt">
-
-<p class="MsoTitle"><span lang="EN-US" style="font-family:&quot;Times New Roman&quot;,serif">Visual
-Task Challenges under Real Rain Scene</span></p>
-
-<p class="MsoSubtitle" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US">Background</span></p>
-
-<p class="MsoNormal"><span lang="EN-US">Early researches on robust understanding of
-rain scenes focus on pairwise supervised synthetic rain scenarios, which is of
-special significance for many real-world applications. In practice, rain is
-more than simply the synthetic rain's rain streaks, and even those in a driving
-environment can be not easy to see. Rain intensity, occlusion, blur, droplet,
-reflection, wiper, and their blending effects are the degradation factors on
-rainy days in outdoor applications such as autonomous driving and surveillance
-systems. Existing vision techniques, in particular the single degradation
-factor, perform better under unreal synthetic conditions but fall short when
-used on real rain scene images where the background contents suffer from a
-variety of complex degradations. Consequently, as a result of these negative
-degradation effects, multimedia applications like image understanding, object
-detection, and identification perform much worse. It is vital to make attempts
-to seek the optimized solution and meet the real demands of people's
-livelihood.</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Challenge</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img width="554" height="143" id="图片 1" src="./image/caption.png"></span></p>
-
-
-<p class="MsoNormal"><b><span lang="EN-US">Shading Effect of Droplet</span></b><b><span style="font-family:FangSong">：</span></b><span lang="EN-US">Droplet,</span><span lang="EN-US"> the most common phenomenon on rainy days, will prevent light from
-passing straight through the object, and when it falls on the windshield, the
-content distortion caused by the reflectance and refraction becomes more
-pronounced. In Fig. (a), areas covered with rain droplet has significant
-misidentification, the green "vegetation'' is identified as the grey "building'',
-while the blue "sky'' is misidentified as the grey "building''.</span></p>
-
-<p class="MsoNormal"><b><span lang="EN-US">Road Reflection</span></b><b><span style="font-family:FangSong">：</span></b><span lang="EN-US">The rain droplets
-accumulated on the road commonly form a mirror reflection effect, confusing the
-segmentation model with the fake and indistinguishable objective boundary. As
-shown in Fig. (b), the shadow of cars is incorrectly identified.</span></p>
-
-<p class="MsoNormal"><b><span lang="EN-US">Blurring by Windshield Wiper</span></b><b><span style="font-family:FangSong">：</span></b><span lang="EN-US">The wiper eliminates the
-visual occlusion caused by the rain accumulation. However, for the real rainy
-days, the wiper operation could evidently promote the visual clarity of human
-observed views, but the unexpected change of scene contents is unfriendly to
-the segmentation model for the real-time application. As is shown in the yellow
-box in Fig. (c), the result is not consistent with the human's view.</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Timeline</span></p>
-
-<table class="MsoTable15Plain1" border="1" cellspacing="0" cellpadding="0" width="586" style="width:439.2pt;border-collapse:collapse;border:none">
- <tbody><tr>
-  <td width="277" valign="top" style="width:207.4pt;border:solid #BFBFBF 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><b><span lang="EN-US">Data</span></b></p>
-  </td>
-  <td width="309" valign="top" style="width:231.8pt;border:solid #BFBFBF 1.0pt;
-  border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><b><span lang="EN-US">Event</span></b></p>
-  </td>
- </tr>
- <tr>
-  <td width="277" valign="top" style="width:207.4pt;border:solid #BFBFBF 1.0pt;
-  border-top:none;background:#F2F2F2;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="color:black">January 1, 2023</span></p>
-  </td>
-  <td width="309" valign="top" style="width:231.8pt;border-top:none;border-left:
-  none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;
-  background:#F2F2F2;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="color:black">Release</span></p>
-  </td>
- </tr>
- <tr>
-  <td width="277" valign="top" style="width:207.4pt;border:solid #BFBFBF 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US">March
-  15, 2023</span></p>
-  </td>
-  <td width="309" valign="top" style="width:231.8pt;border-top:none;border-left:
-  none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US">Paper
-  &amp; Model Submission Deadline</span></p>
-  </td>
- </tr>
- <tr>
-  <td width="277" valign="top" style="width:207.4pt;border:solid #BFBFBF 1.0pt;
-  border-top:none;background:#F2F2F2;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="color:black">March 31, 2023</span></p>
-  </td>
-  <td width="309" valign="top" style="width:231.8pt;border-top:none;border-left:
-  none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;
-  background:#F2F2F2;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US" style="color:black">Notification</span></p>
-  </td>
- </tr>
- <tr>
-  <td width="277" valign="top" style="width:207.4pt;border:solid #BFBFBF 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US">April
-  6, 2023</span></p>
-  </td>
-  <td width="309" valign="top" style="width:231.8pt;border-top:none;border-left:
-  none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt">
-  <p class="MsoNormal" align="center" style="text-align:center"><span lang="EN-US">Camera-Ready
-  Regular Paper Submission</span></p>
-  </td>
- </tr>
-</tbody></table>
-
-<p class="MsoNormal" style="layout-grid-mode:char;background:white"><span lang="EN-US" style="color:#212529">Please refer to the </span><span lang="EN-US" style="color:black"><a href="https://www.2023.ieeeicme.org/general-calls.php">submission
-deadline</a></span><span lang="EN-US" style="color:#212529"> for details.</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Rainy WCity
-Datasets</span></p>
-
-<p class="MsoNormal"><b><span lang="EN-US" style="font-size:14.0pt">Introduce</span></b></p>
-
-<p class="MsoNormal"><span lang="EN-US">The Rainy WCity
-dataset consists of 600 rainy pictures. We observe that there are three typical
-degradation factors in these pictures that affect the quality of the picture:
-raindrop, wiper, and reflection. Here we split the Rainy WCity with 500 for
-image training and 100 for testing, and each segment divided into three main
-categories according to the three degradation factors. The size of each picture
-is 1920×1080. And there is no pixel-by-pixel paired reference images, since our
-dataset is taken in the real rain scene.</span><span lang="EN-US"> </span></p>
-
-
-<p class="MsoNormal"><span lang="EN-US">Rainy WCity covers various rain patterns
-and their bring-in negative visual effects, covering raindrop, wiper,
-reflection, refraction, shadow, windshield-blurring, etc. Our dataset
-distinguishes others by featuring the following elements: <b>1) Diverse Rain
-Patterns: </b>including light, moderate, and heavy rain scenarios; <b>2)
-Diverse degradation factors: </b>besides the typical rain occlusion, our
-dataset considers numerous adverse effects of degradation, commonly occurred on
-rainy days but overlooked in other real rainy datasets, e.g., the raindrop
-interference, windshield-blurring, and road reflection.</span></p>
-
-<p class="MsoNormal" style="margin-top:7.8pt"><b><span lang="EN-US" style="font-size:14.0pt">Topic</span></b></p>
-
-<p class="MsoNormal"><span lang="EN-US">This challenge aims at addressing the
-visibility problem of vision tasks under adverse weather scenarios (e.g.,fog,
-rain, low-illumination) for sharing ideas and discussions on current trends,
-issues, and future directions. The</span><span lang="EN-US"> </span><span lang="EN-US">topics include but are not limited to:</span></p>
-
-<p class="MsoListParagraph" style="margin-left:39.0pt;text-indent:-18.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US">Semantic Segmentation under Real Rain Scene</span></p>
-
-<p class="MsoListParagraph" style="margin-left:39.0pt;text-indent:-18.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US">Object Detection under Real Rain Scene</span></p>
-
-<p class="MsoNormal" style="margin-top:7.8pt"><b><span lang="EN-US" style="font-size:14.0pt">Download</span></b></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Baidu
-Netdisk</span><span style="font-family:FangSong">：</span><span lang="EN-US"><a href="https://pan.baidu.com/s/1Abtdtu2fHNcged0GUQieCw">Rainy WCity</a></span></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Google
-Drive</span><span style="font-family:FangSong">：</span><span lang="EN-US"><a href="https://drive.google.com/drive/folders/1ga6fsxl8NvrevtihEQEDpK-9fIchLBGe?usp=share_link">Rainy
-WCity</a></span></p>
-
-<p class="MsoNormal" style="margin-top:7.8pt"><b><span lang="EN-US" style="font-size:14.0pt">Ask for Permission</span></b></p>
-
-<p class="MsoNormal" style="text-indent:21.0pt"><b><span lang="EN-US">Track 1:
-Semantic Segmentation under Real Rain Scene</span></b></p>
-
-<p class="MsoNormal" style="text-indent:21.0pt"><b><span lang="EN-US">Track 2:
-Object Detection under Real Rain Scene</span></b></p>
-
-<p class="MsoNormal" style="text-indent:21.0pt"><span lang="EN-US" style="color:red">If you would like to use our dataset, please download the
-release file. The download of Rainy WCity DATABASE RELEASE AGREEMENT is here</span><span style="font-family:FangSong;color:red">：</span></p>
-
-<p class="MsoNormal" style="text-indent:21.0pt"><b><span lang="EN-US"><img border="0" width="60" height="60" src="./image/word.png"></span><a href="./Rainy WCity DATABASE RELEASE AGREEMENT.docx" download="">Rainy WCity DATABASE RELEASE AGREEMENT</a>   </b></p>
-
-<p class="MsoNormal" style="margin-top:7.8pt"><b><span lang="EN-US" style="font-size:14.0pt">Evaluation Protocol</span></b></p>
-
-<p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:0cm"><span lang="EN-US">Semantic Segmentation</span><span style="font-family:FangSong">：</span><span lang="EN-US">mIoU</span></p>
-
-<p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:0cm"><span lang="EN-US">Object Detection</span><span style="font-family:FangSong">：</span><span lang="EN-US">IoU</span><span style="font-family:FangSong">、</span><span lang="EN-US">mAP</span></p>
-
-<p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:0cm"><span lang="EN-US">Deraining</span><span style="font-family:FangSong">：</span><span lang="EN-US">NIQE</span><span style="font-family:FangSong">、</span><span lang="EN-US">SSEQ</span><span style="font-family:FangSong">、</span><span lang="EN-US">PIQE</span><span style="font-family:FangSong">、</span><span lang="EN-US">Perceptual Index</span></p>
-
-<p class="MsoListParagraph" style="margin-left:39.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US">In the semantic segmentation field, metrics such
-as Mean Intersection over Union (mIoU) are commonly used to evalute
-segmentation effects.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:39.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US">In the object detection field, conventional
-metrics like Mean Average Precision (mAP), Intersection over Union (IoU), etc.
-are used to measure detection effectiveness.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:39.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">(Optionally) </span></b><span lang="EN-US">Since
-our rain scene belongs to the field of image enhancement, other non-referenced subjective
-evaluation metrics are also available: e.g. Spatial-Spectral Entropy-based
-Quality (SSEQ), Natural Image Quality Evaluator (NIQE), Perception-based Image
-Quality Evaluator (PIQE) and Perception Index (PI).</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Paper
-Submission</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US"><a href="https://www.2023.ieeeicme.org/general-calls.php" target="_blank">Submission
-deadline</a></span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">Length:</span></b><span lang="EN-US" style="font-family:&quot;Cambria&quot;,serif"> </span><span lang="EN-US">Papers must be no
-longer than 6 pages, including all text, figures, and references.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">Format:</span></b><span lang="EN-US" style="font-family:&quot;Cambria&quot;,serif"> </span><span lang="EN-US">Grand Challenge
-papers have the same format as regular papers. See the example paper under the
-General Information section below. However, their review is single blind.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">Submission:</span></b><span lang="EN-US" style="font-family:&quot;Cambria&quot;,serif"> </span><span lang="EN-US">Submit the written
-component via CMT under the appropriate Grand Challenge track. Submit the data
-component, if any, directly to the Grand Challenge organizers as specified on
-the appropriate Grand Challenge site.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">Review:</span></b><span lang="EN-US" style="font-family:&quot;Cambria&quot;,serif"> </span><span lang="EN-US">Submissions of
-both written and data components will be reviewed directly by the Grand
-Challenge organizers. Accepted submissions (written component only) will be
-included in the USB Proceedings and the authors will be given the opportunity
-to present their work at ICME. “Winning” submissions will be announced by the
-Grand Challenge organizers at the conference.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><span lang="EN-US">Submissions may be accompanied by up to 20 MB of
-supplemental material following the same guidelines as regular and special
-session papers.</span></p>
-
-<p class="MsoListParagraph" style="margin-left:21.0pt;text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
-</span></span><b><span lang="EN-US">Presentation guarantee:</span></b><span lang="EN-US" style="font-family:&quot;Cambria&quot;,serif"> </span><span lang="EN-US">As with
-accepted Regular and Special Session papers, accepted Grand Challenge papers
-must be registered by the author deadline and presented at the conference;
-otherwise they will not be included in IEEE Xplore.</span></p>
-
-<p class="MsoListParagraph" align="left" style="margin-left:21.0pt;text-align:left;
-text-indent:-21.0pt"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp; </span></span><span lang="EN-US">A
-Grand Challenge paper is covered by a full-conference registration only.<br clear="all" style="page-break-before:always">
-</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Organizers</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img border="0" width="553" height="369" id="图片 37" src="./image/1.jpg"></span></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img border="0" width="554" height="316" id="图片 38" src="./image/2.jpg"></span></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img border="0" width="553" height="356" id="图片 39" src="./image/3.jpg"></span></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img border="0" width="553" height="468" id="图片 40" src="./image/4.jpg"></span></p>
-
-<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoNormal"><span lang="EN-US"><img border="0" width="554" height="392" id="图片 41" src="./image/5.jpg"></span></p>
-
-<p class="MsoNormal" style="text-indent:7.1pt"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoNormal" style="text-indent:7.1pt"><span lang="EN-US">&nbsp;</span></p>
-
-<p class="MsoSubtitle" align="left" style="text-align:left"><span lang="EN-US">Communication
-&amp; QA</span></p>
-
-<p class="MsoNormal" style="text-indent:21.0pt"><span lang="EN-US"><a href="mailto:zhongx@whut.edu.cn">zhongx@whut.edu.cn</a></span></p>
-
-<p class="MsoNormal" style="text-indent:7.1pt"><span lang="EN-US">&nbsp;</span></p>
-
-</div>
-
-
-
-
-</body></html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Generator" content="Microsoft Word 15 (filtered)" />
+
+    <style>
+      <!--
+       /* Font Definitions */
+       @font-face
+      	{font-family:Wingdings;
+      	panose-1:5 0 0 0 0 0 0 0 0 0;}
+      @font-face
+      	{font-family:瀹嬩綋;
+      	panose-1:2 1 6 0 3 1 1 1 1 1;}
+      @font-face
+      	{font-family:"Cambria Math";
+      	panose-1:2 4 5 3 5 4 6 3 2 4;}
+      @font-face
+      	{font-family:绛夌嚎;
+      	panose-1:2 1 6 0 3 1 1 1 1 1;}
+      @font-face
+      	{font-family:"绛夌嚎 Light";
+      	panose-1:2 1 6 0 3 1 1 1 1 1;}
+      @font-face
+      	{font-family:FangSong;
+      	panose-1:2 1 6 9 6 1 1 1 1 1;}
+      @font-face
+      	{font-family:Cambria;
+      	panose-1:2 4 5 3 5 4 6 3 2 4;}
+      @font-face
+      	{font-family:"\@绛夌嚎 Light";}
+      @font-face
+      	{font-family:"\@绛夌嚎";
+      	panose-1:2 1 6 0 3 1 1 1 1 1;}
+      @font-face
+      	{font-family:"\@FangSong";}
+      @font-face
+      	{font-family:"\@瀹嬩綋";
+      	panose-1:2 1 6 0 3 1 1 1 1 1;}
+       /* Style Definitions */
+       p.MsoNormal, li.MsoNormal, div.MsoNormal
+      	{margin-block-start: 1em;
+          	margin-block-end: 1em;
+          	margin-inline-start: 0px;
+          	margin-inline-end: 0px;
+      	text-align:justify;
+      	text-justify:inter-ideograph;
+      	font-size:12.0pt;
+      	font-family:"Times New Roman",serif;}
+      p.MsoTitle, li.MsoTitle, div.MsoTitle
+      	{mso-style-link:"鏍囬 瀛楃";
+      	margin-top:12.0pt;
+      	margin-right:0cm;
+      	margin-bottom:3.0pt;
+      	margin-left:0cm;
+      	text-align:center;
+      	font-size:16.0pt;
+      	font-family:"绛夌嚎 Light";
+      	font-weight:bold;}
+      p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+      	{mso-style-link:"鍓爣棰� 瀛楃";
+      	margin-top:12.0pt;
+      	margin-right:0cm;
+      	margin-bottom:3.0pt;
+      	margin-left:0cm;
+      	text-align:center;
+      	font-size:16.0pt;
+      	font-family:"Times New Roman",serif;
+      	font-weight:bold;}
+      a:link, span.MsoHyperlink
+      	{color:blue;
+      	text-decoration:underline;}
+      p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+      	{margin-block-start: 1em;
+          	margin-block-end: 1em;
+          	margin-inline-start: 0px;
+          	margin-inline-end: 0px;
+      	text-align:justify;
+      	text-justify:inter-ideograph;
+      	text-indent:21.0pt;
+      	font-size:12.0pt;
+      	font-family:"Times New Roman",serif;}
+      span.a
+      	{mso-style-name:"鏍囬 瀛楃";
+      	mso-style-link:鏍囬;
+      	font-family:"绛夌嚎 Light";
+      	font-weight:bold;}
+      span.a0
+      	{mso-style-name:"鍓爣棰� 瀛楃";
+      	mso-style-link:鍓爣棰�;
+      	font-family:"Times New Roman",serif;
+      	font-weight:bold;}
+      .MsoChpDefault
+      	{font-family:绛夌嚎;}
+       /* Page Definitions */
+       @page WordSection1
+      	{size:595.3pt 841.9pt;
+      	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+      	layout-grid:15.6pt;}
+      div.WordSection1
+      	{page:WordSection1;}
+       /* List Definitions */
+       ol
+      	{margin-bottom:0cm;}
+      ul
+      	{margin-bottom:0cm;}
+      -->
+    </style>
+  </head>
+
+  <body
+    lang="ZH-CN"
+    link="blue"
+    vlink="#954F72"
+    style="word-wrap: break-word; margin-left: 210px; margin-right: 280px; margin-top: 50px"
+  >
+    <div class="WordSection1" style="layout-grid: 15.6pt">
+      <p class="MsoTitle">
+        <span lang="EN-US" style="font-family: 'Times New Roman', serif"
+          >Visual Task Challenges under Real Rain Scene</span
+        >
+      </p>
+
+      <p class="MsoSubtitle" style="text-align: justify; text-justify: inter-ideograph">
+        <span lang="EN-US">Background</span>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          >Early researches on robust understanding of rain scenes focus on pairwise supervised
+          synthetic rain scenarios, which is of special significance for many real-world
+          applications. In practice, rain is more than simply the synthetic rain's rain streaks, and
+          even those in a driving environment can be not easy to see. Rain intensity, occlusion,
+          blur, droplet, reflection, wiper, and their blending effects are the degradation factors
+          on rainy days in outdoor applications such as autonomous driving and surveillance systems.
+          Existing vision techniques, in particular the single degradation factor, perform better
+          under unreal synthetic conditions but fall short when used on real rain scene images where
+          the background contents suffer from a variety of complex degradations. Consequently, as a
+          result of these negative degradation effects, multimedia applications like image
+          understanding, object detection, and identification perform much worse. It is vital to
+          make attempts to seek the optimized solution and meet the real demands of people's
+          livelihood.</span
+        >
+      </p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Challenge</span>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img width="554" height="143" id="鍥剧墖 1" src="./image/caption.png"
+        /></span>
+      </p>
+
+      <p class="MsoNormal">
+        <b><span lang="EN-US">Shading Effect of Droplet</span></b
+        ><b><span style="font-family: FangSong">锛�</span></b
+        ><span lang="EN-US">Droplet,</span
+        ><span lang="EN-US">
+          the most common phenomenon on rainy days, will prevent light from passing straight through
+          the object, and when it falls on the windshield, the content distortion caused by the
+          reflectance and refraction becomes more pronounced. In Fig. (a), areas covered with rain
+          droplet has significant misidentification, the green "vegetation'' is identified as the
+          grey "building'', while the blue "sky'' is misidentified as the grey "building''.</span
+        >
+      </p>
+
+      <p class="MsoNormal">
+        <b><span lang="EN-US">Road Reflection</span></b
+        ><b><span style="font-family: FangSong">锛�</span></b
+        ><span lang="EN-US"
+          >The rain droplets accumulated on the road commonly form a mirror reflection effect,
+          confusing the segmentation model with the fake and indistinguishable objective boundary.
+          As shown in Fig. (b), the shadow of cars is incorrectly identified.</span
+        >
+      </p>
+
+      <p class="MsoNormal">
+        <b><span lang="EN-US">Blurring by Windshield Wiper</span></b
+        ><b><span style="font-family: FangSong">锛�</span></b
+        ><span lang="EN-US"
+          >The wiper eliminates the visual occlusion caused by the rain accumulation. However, for
+          the real rainy days, the wiper operation could evidently promote the visual clarity of
+          human observed views, but the unexpected change of scene contents is unfriendly to the
+          segmentation model for the real-time application. As is shown in the yellow box in Fig.
+          (c), the result is not consistent with the human's view.</span
+        >
+      </p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Timeline</span>
+      </p>
+
+      <table
+        class="MsoTable15Plain1"
+        border="1"
+        cellspacing="0"
+        cellpadding="0"
+        width="586"
+        style="width: 439.2pt; border-collapse: collapse; border: none"
+      >
+        <tbody>
+          <tr>
+            <td
+              width="277"
+              valign="top"
+              style="width: 207.4pt; border: solid #bfbfbf 1pt; padding: 0cm 5.4pt 0cm 5.4pt"
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <b><span lang="EN-US">Data</span></b>
+              </p>
+            </td>
+            <td
+              width="309"
+              valign="top"
+              style="
+                width: 231.8pt;
+                border: solid #bfbfbf 1pt;
+                border-left: none;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <b><span lang="EN-US">Event</span></b>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              width="277"
+              valign="top"
+              style="
+                width: 207.4pt;
+                border: solid #bfbfbf 1pt;
+                border-top: none;
+                background: #f2f2f2;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US" style="color: black">January 1, 2023</span>
+              </p>
+            </td>
+            <td
+              width="309"
+              valign="top"
+              style="
+                width: 231.8pt;
+                border-top: none;
+                border-left: none;
+                border-bottom: solid #bfbfbf 1pt;
+                border-right: solid #bfbfbf 1pt;
+                background: #f2f2f2;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US" style="color: black">Release</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              width="277"
+              valign="top"
+              style="
+                width: 207.4pt;
+                border: solid #bfbfbf 1pt;
+                border-top: none;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US">March 15, 2023</span>
+              </p>
+            </td>
+            <td
+              width="309"
+              valign="top"
+              style="
+                width: 231.8pt;
+                border-top: none;
+                border-left: none;
+                border-bottom: solid #bfbfbf 1pt;
+                border-right: solid #bfbfbf 1pt;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US">Paper &amp; Model Submission Deadline</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              width="277"
+              valign="top"
+              style="
+                width: 207.4pt;
+                border: solid #bfbfbf 1pt;
+                border-top: none;
+                background: #f2f2f2;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US" style="color: black">March 31, 2023</span>
+              </p>
+            </td>
+            <td
+              width="309"
+              valign="top"
+              style="
+                width: 231.8pt;
+                border-top: none;
+                border-left: none;
+                border-bottom: solid #bfbfbf 1pt;
+                border-right: solid #bfbfbf 1pt;
+                background: #f2f2f2;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US" style="color: black">Notification</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              width="277"
+              valign="top"
+              style="
+                width: 207.4pt;
+                border: solid #bfbfbf 1pt;
+                border-top: none;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US">April 6, 2023</span>
+              </p>
+            </td>
+            <td
+              width="309"
+              valign="top"
+              style="
+                width: 231.8pt;
+                border-top: none;
+                border-left: none;
+                border-bottom: solid #bfbfbf 1pt;
+                border-right: solid #bfbfbf 1pt;
+                padding: 0cm 5.4pt 0cm 5.4pt;
+              "
+            >
+              <p class="MsoNormal" align="center" style="text-align: center">
+                <span lang="EN-US">Camera-Ready Regular Paper Submission</span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="MsoNormal" style="layout-grid-mode: char; background: white">
+        <span lang="EN-US" style="color: #212529">Please refer to the </span
+        ><span lang="EN-US" style="color: black"
+          ><a href="https://www.2023.ieeeicme.org/general-calls.php">submission deadline</a></span
+        ><span lang="EN-US" style="color: #212529"> for details.</span>
+      </p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Rainy WCity Datasets</span>
+      </p>
+
+      <p class="MsoNormal">
+        <b><span lang="EN-US" style="font-size: 14pt">Introduce</span></b>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          >The Rainy WCity dataset consists of 600 rainy pictures. We observe that there are three
+          typical degradation factors in these pictures that affect the quality of the picture:
+          raindrop, wiper, and reflection. Here we split the Rainy WCity with 500 for image training
+          and 100 for testing, and each segment divided into three main categories according to the
+          three degradation factors. The size of each picture is 1920脳1080. And there is no
+          pixel-by-pixel paired reference images, since our dataset is taken in the real rain
+          scene.</span
+        ><span lang="EN-US"> </span>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          >Rainy WCity covers various rain patterns and their bring-in negative visual effects,
+          covering raindrop, wiper, reflection, refraction, shadow, windshield-blurring, etc. Our
+          dataset distinguishes others by featuring the following elements:
+          <b>1) Diverse Rain Patterns: </b>including light, moderate, and heavy rain scenarios;
+          <b>2) Diverse degradation factors: </b>besides the typical rain occlusion, our dataset
+          considers numerous adverse effects of degradation, commonly occurred on rainy days but
+          overlooked in other real rainy datasets, e.g., the raindrop interference,
+          windshield-blurring, and road reflection.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="margin-top: 7.8pt">
+        <b><span lang="EN-US" style="font-size: 14pt">Topic</span></b>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          >This challenge aims at addressing the visibility problem of vision tasks under adverse
+          weather scenarios (e.g.,fog, rain, low-illumination) for sharing ideas and discussions on
+          current trends, issues, and future directions. The</span
+        ><span lang="EN-US"> </span><span lang="EN-US">topics include but are not limited to:</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 39pt; text-indent: -18pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US">Semantic Segmentation under Real Rain Scene</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 39pt; text-indent: -18pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US">Object Detection under Real Rain Scene</span>
+      </p>
+
+      <p class="MsoNormal" style="margin-top: 7.8pt">
+        <b><span lang="EN-US" style="font-size: 14pt">Download</span></b>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Baidu Netdisk</span
+        ><span style="font-family: FangSong">锛�</span
+        ><span lang="EN-US"
+          ><a href="https://pan.baidu.com/s/1Abtdtu2fHNcged0GUQieCw">Rainy WCity</a></span
+        >
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Google Drive</span
+        ><span style="font-family: FangSong">锛�</span
+        ><span lang="EN-US"
+          ><a
+            href="https://drive.google.com/drive/folders/1ga6fsxl8NvrevtihEQEDpK-9fIchLBGe?usp=share_link"
+            >Rainy WCity</a
+          ></span
+        >
+      </p>
+
+      <p class="MsoNormal" style="margin-top: 7.8pt">
+        <b><span lang="EN-US" style="font-size: 14pt">Ask for Permission</span></b>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 21pt">
+        <b><span lang="EN-US">Track 1: Semantic Segmentation under Real Rain Scene</span></b>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 21pt">
+        <b><span lang="EN-US">Track 2: Object Detection under Real Rain Scene</span></b>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 21pt">
+        <span lang="EN-US" style="color: red"
+          >If you would like to use our dataset, please download the release file. The download of
+          Rainy WCity DATABASE RELEASE AGREEMENT is here</span
+        ><span style="font-family: FangSong; color: red">锛�</span>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 21pt">
+        <b
+          ><span lang="EN-US"><img border="0" width="60" height="60" src="./image/word.png" /></span
+          ><a href="./Rainy WCity DATABASE RELEASE AGREEMENT.docx" download=""
+            >Rainy WCity DATABASE RELEASE AGREEMENT</a
+          >
+        </b>
+      </p>
+
+      <p class="MsoNormal" style="margin-top: 7.8pt">
+        <b><span lang="EN-US" style="font-size: 14pt">Evaluation Protocol</span></b>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 18pt; text-indent: 0cm">
+        <span lang="EN-US">Semantic Segmentation</span><span style="font-family: FangSong">锛�</span
+        ><span lang="EN-US">mIoU</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 18pt; text-indent: 0cm">
+        <span lang="EN-US">Object Detection</span><span style="font-family: FangSong">锛�</span
+        ><span lang="EN-US">IoU</span><span style="font-family: FangSong">銆�</span
+        ><span lang="EN-US">mAP</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 18pt; text-indent: 0cm">
+        <span lang="EN-US">Deraining</span><span style="font-family: FangSong">锛�</span
+        ><span lang="EN-US">NIQE</span><span style="font-family: FangSong">銆�</span
+        ><span lang="EN-US">SSEQ</span><span style="font-family: FangSong">銆�</span
+        ><span lang="EN-US">PIQE</span><span style="font-family: FangSong">銆�</span
+        ><span lang="EN-US">Perceptual Index</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 39pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US"
+          >In the semantic segmentation field, metrics such as Mean Intersection over Union (mIoU)
+          are commonly used to evalute segmentation effects.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 39pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US"
+          >In the object detection field, conventional metrics like Mean Average Precision (mAP),
+          Intersection over Union (IoU), etc. are used to measure detection effectiveness.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 39pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">(Optionally) </span></b
+        ><span lang="EN-US"
+          >Since our rain scene belongs to the field of image enhancement, other non-referenced
+          subjective evaluation metrics are also available: e.g. Spatial-Spectral Entropy-based
+          Quality (SSEQ), Natural Image Quality Evaluator (NIQE), Perception-based Image Quality
+          Evaluator (PIQE) and Perception Index (PI).</span
+        >
+      </p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Paper Submission</span>
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US"
+          ><a href="https://www.2023.ieeeicme.org/general-calls.php" target="_blank"
+            >Submission deadline</a
+          ></span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">Length:</span></b
+        ><span lang="EN-US" style="font-family: 'Cambria', serif"> </span
+        ><span lang="EN-US"
+          >Papers must be no longer than 6 pages, including all text, figures, and references.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">Format:</span></b
+        ><span lang="EN-US" style="font-family: 'Cambria', serif"> </span
+        ><span lang="EN-US"
+          >Grand Challenge papers have the same format as regular papers. See the example paper
+          under the General Information section below. However, their review is single blind.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">Submission:</span></b
+        ><span lang="EN-US" style="font-family: 'Cambria', serif"> </span
+        ><span lang="EN-US"
+          >Submit the written component via CMT under the appropriate Grand Challenge track. Submit
+          the data component, if any, directly to the Grand Challenge organizers as specified on the
+          appropriate Grand Challenge site.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">Review:</span></b
+        ><span lang="EN-US" style="font-family: 'Cambria', serif"> </span
+        ><span lang="EN-US"
+          >Submissions of both written and data components will be reviewed directly by the Grand
+          Challenge organizers. Accepted submissions (written component only) will be included in
+          the USB Proceedings and the authors will be given the opportunity to present their work at
+          ICME. 鈥淲inning鈥� submissions will be announced by the Grand Challenge organizers at the
+          conference.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US"
+          >Submissions may be accompanied by up to 20 MB of supplemental material following the same
+          guidelines as regular and special session papers.</span
+        >
+      </p>
+
+      <p class="MsoListParagraph" style="margin-left: 21pt; text-indent: -21pt">
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><b><span lang="EN-US">Presentation guarantee:</span></b
+        ><span lang="EN-US" style="font-family: 'Cambria', serif"> </span
+        ><span lang="EN-US"
+          >As with accepted Regular and Special Session papers, accepted Grand Challenge papers must
+          be registered by the author deadline and presented at the conference; otherwise they will
+          not be included in IEEE Xplore.</span
+        >
+      </p>
+
+      <p
+        class="MsoListParagraph"
+        align="left"
+        style="margin-left: 21pt; text-align: left; text-indent: -21pt"
+      >
+        <span lang="EN-US" style="font-family: Wingdings"
+          >l<span style="font: 7pt 'Times New Roman'">&nbsp; </span></span
+        ><span lang="EN-US"
+          >A Grand Challenge paper is covered by a full-conference registration only.<br
+            clear="all"
+            style="page-break-before: always"
+          />
+        </span>
+      </p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Organizers</span>
+      </p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img border="0" width="553" height="369" id="鍥剧墖 37" src="./image/1.jpg"
+        /></span>
+      </p>
+
+      <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img border="0" width="554" height="316" id="鍥剧墖 38" src="./image/2.jpg"
+        /></span>
+      </p>
+
+      <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img border="0" width="553" height="356" id="鍥剧墖 39" src="./image/3.jpg"
+        /></span>
+      </p>
+
+      <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img border="0" width="553" height="468" id="鍥剧墖 40" src="./image/4.jpg"
+        /></span>
+      </p>
+
+      <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal">
+        <span lang="EN-US"
+          ><img border="0" width="554" height="392" id="鍥剧墖 41" src="./image/5.jpg"
+        /></span>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 7.1pt"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal" style="text-indent: 7.1pt"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoSubtitle" align="left" style="text-align: left">
+        <span lang="EN-US">Communication &amp; QA</span>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 21pt">
+        <span lang="EN-US"><a href="mailto:zhongx@whut.edu.cn">zhongx@whut.edu.cn</a></span>
+      </p>
+
+      <p class="MsoNormal" style="text-indent: 7.1pt"><span lang="EN-US">&nbsp;</span></p>
+    </div>
+  </body>
+</html>
